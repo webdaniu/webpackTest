@@ -20,7 +20,7 @@ let webpackConfig = {
   entry: path.resolve(__dirname, 'src'),
   output:{
     path: path.resolve(__dirname,'dist'),
-    filename: 'static/js/build.js',
+    filename: 'static/js/[name].js',
     publicPath:'./',
     chunkFilename: 'static/js/chunk/[name].js'
   },
@@ -86,9 +86,8 @@ let webpackConfig = {
       title: 'title'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor'],
-      minSize: 1
+      name: 'commons',
+      minSize: Infinity
     }),
     new UglifyJSPlugin()
   ]
